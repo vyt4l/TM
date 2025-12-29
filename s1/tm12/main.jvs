@@ -1,0 +1,165 @@
+class Magasin{
+	String nom;
+	Produit[] produits;
+	int nbProduits;
+	String ville;
+}
+
+class Produit{
+	String nom;
+	int variante;
+	Magasin[] magasins;
+	int nbMagasins;
+}
+
+Magasin créationMagasin(String nom , String ville){
+	Magasin newMag = new Magasin();
+	newMag.nom = nom;
+	newMag.ville = ville;
+	return newMag;
+}
+
+Produit creationProduit(String nom, int variante){
+	Produit p = new Produit();
+	p.nom = nom;
+	p.variante = variante;
+	return p;
+}
+
+
+void ajouterProduit(Magasin m, Produit p){
+	int l = m.produits.length;
+	Produit [] newtab = new Produit[l+1];
+	for(int i = 0 ; i < l ; i++){
+		newtab[i] = m.produits[i];
+	}
+	newtab[l] = p;
+	m.produits = newtab;
+	m.nbProduits++;
+}
+
+
+void ajouterMagasin(Magasin m, Produit p){
+	int l = p.magasins.length;
+	Magasin [] newtab = new Magasin[l+1];
+	for(int i = 0 ; i <l ; i++){
+		newtab[i] = p.magasins[i];
+	}
+	newtab[l] = m;
+	p.magasins = newtab;
+	p.nbMagasins++;
+}
+
+boolean enVente(Produit p, Magasin m){
+	for(int i = 0 ; i < m.produits.length; i++){
+		if(m.produits[i] == p){
+			return true;
+		}
+	}
+	return false;
+}
+
+
+boolean inventaire(Produit p, Magasin m){
+	for(int i = 0 ; i < p.magasins.length; i++){
+		if(p.magasins[i] == m){
+			return true;
+		}
+	}
+	return false;
+}
+
+boolean auMoinsDeux(Produit p, Magasin[] mag, String ville){
+	int count = 0;
+	for(int i = 0 ; i < mag.length ; i++){
+		if(mag[i].ville == ville){
+			if(enVente(p , mag[i])){
+				count++;
+			}
+		}
+	}
+	return count<=2;
+}
+
+boolean coherenceProd(Produit p, Magasin m){
+	return(!enVente(p , m) && inventaire(p , m));
+}
+
+boolean coherenceMag(Produit p, Magasin m){
+	return(enVente(p , m) && !inventaire(p , m));
+}
+
+void rendreCoherent(Produit p, Magasin m){
+	if(coherenceMag(p , m)){
+		ajouterProduit(m , p);
+	} else if (coherenceProd(p , m)){
+		ajouterMagasin(m , p);
+	}
+}
+
+void main(){
+	Magasin Gemo = new Magasin();
+	Gemo.ville = "Créteil"; 
+	Gemo.nom = "Gemo";
+	Gemo.produits = new Produit[0];
+	Gemo.nbProduits = 0;
+	Magasin Halle = new Magasin();
+	Halle.ville = "Nogent"; 
+	Halle.nom = "Halle";
+	Halle.produits = new Produit[0];
+	Halle.nbProduits = 0;
+	Magasin Intersport = new Magasin();
+	Intersport.ville = "Créteil"; 
+	Intersport.nom = "Intersport";
+	Intersport.produits = new Produit[0];
+	Intersport.nbProduits = 0;
+	Magasin Deichmann = new Magasin();
+	Deichmann.ville = "Ivry"; 
+	Deichmann.nom = "Deichmann";
+	Deichmann.produits = new Produit[0];
+	Deichmann.nbProduits = 0;
+	Magasin Besson = new Magasin();
+	Besson.ville = "Ivry"; 
+	Besson.nom = "Besson";
+	Besson.produits = new Produit[0];
+	Besson.nbProduits = 0;
+	Produit Basket = new Produit();
+	Basket.nom = "Basket";
+	Basket.variante = 2;
+	Basket.magasins = new Magasin[0];
+	Basket.nbMagasins = 0;
+	Produit Escarpin = new Produit();
+	Escarpin.nom = "Escarpin";
+	Escarpin.variante = 3;
+	Escarpin.magasins = new Magasin[0];
+	Escarpin.nbMagasins = 0;
+	Produit Chausson = new Produit();
+	Chausson.nom = "Chausson";
+	Chausson.variante = 5;
+	Chausson.magasins = new Magasin[0];
+	Chausson.nbMagasins = 0;
+	Produit Claquette = new Produit();
+	Claquette.nom = "Claquette";
+	Claquette.variante = 4;
+	Claquette.magasins = new Magasin[0];
+	Claquette.nbMagasins = 0;
+	ajouterProduit(Gemo , Escarpin);
+	ajouterProduit(Gemo , Claquette);
+	ajouterProduit(Halle , Escarpin);
+	ajouterProduit(Halle , Basket);
+	ajouterProduit(Halle , Chausson);
+	ajouterProduit(Intersport , Claquette);
+	ajouterProduit(Intersport , Basket);
+	ajouterProduit(Deichmann , Escarpin);
+	ajouterProduit(Besson , Claquette);
+	ajouterProduit(Besson , Basket);
+	ajouterProduit(Besson , Escarpin);
+	ajouterProduit(Besson , Chausson);
+	println(Gemo.produits[0].nom);
+	println(Halle.produits[1].nom + " , " + Intersport.produits[1].nom);
+	println(inventaire(Claquette , Gemo));
+	Magasin [] lmag = new Magasin[]{Gemo,Halle,Intersport,Deichmann,Besson};
+	println(auMoinsDeux(Claquette , lmag , "Créteil"));
+	rendreCoherent(Escarpin , Halle);
+	rendreCoherent(Chausson , Deichmann);
+}

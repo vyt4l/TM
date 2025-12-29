@@ -1,0 +1,84 @@
+class Article{
+	String nom;
+	double prix;
+	
+	void afficherArticle(){
+		println("L'article " + nom + " coûte " + prix + " euros.");
+	}
+}
+
+class Panier{
+	Article [] article;
+	int nbArticles ;
+
+	void afficherPanier(){
+		println("Votre panier contient " + (article.length + 1) + " articles :");
+		for(int i = 0 ; i < article.length; i++){
+			print("  ");
+			article[i].afficherArticle();
+		}
+	}
+}
+
+Panier initialiserPanier(Article [] article, int nb){
+	Panier Pan = new Panier();
+	Pan.article = article;
+	Pan.nbArticles = nb;
+	return Pan;
+}
+
+Article saisirArticle(String nom , double prix){
+	Article Art = new Article();
+	Art.nom = nom;
+	Art.prix = prix;
+	return Art;
+}
+
+double prixTotal(Panier p){
+	double sum = 0;
+	for(int i = 0 ; i < p.article.length ; i++){
+		sum += p.article[i].prix;
+	}
+	return sum;
+
+}
+
+boolean panierPlein(Panier p){
+	return p.article.length >= p.nbArticles - 1;
+}
+
+boolean ajouterArticle(Panier p , Article a){
+	if(!panierPlein(p)){
+		if(p.article.length != 1){
+			Article [] art = new Article [p.article.length+1];
+			for(int i = 0 ; i < p.article.length ; i++){
+				art[i] = p.article[i];	
+			}
+			art[p.article.length] = a;
+			p.article = art;
+		} else {
+			p.article[0] = a;
+		} 
+		
+		return true;
+	}
+	return false;
+}
+
+void main(){
+	Article [] art1 = new Article [1];
+	Panier p = initialiserPanier(art1 , readInt("Taille de votre panier ?"));
+	while(true){
+		if(equal(readString("Ajouter un nouvel article ? (oui/non)"), "oui" )){
+			if(!ajouterArticle(p , saisirArticle(readString("Nom de votre article ?") , readDouble("Prix de votre article ?")))){
+				break;
+			};	
+		}else {
+			break;
+		}	
+	}
+	p.afficherPanier();
+	println("");
+	println("Prix total du panier : " + prixTotal(p));
+}
+
