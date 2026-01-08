@@ -44,7 +44,6 @@ class EXO2 {
         }
       }
     }
-    IO.println(wordn);
     String[] res = new String[wordn];
     String tmp = "";
     int x = 0;
@@ -61,6 +60,35 @@ class EXO2 {
     }
     return res;
   }
+  
+  static String remplaceMot(String s, String mot1, String mot2){
+    String[] tab = decomposePhrase(s);
+    String res = "";
+    for(int i = 0 ; i < tab.length ; i++){
+      if(tab[i].equals(mot1)){
+        tab[i] = mot2;
+      }
+      if(i != tab.length - 1){
+        res += (tab[i] + " ");
+      } else {
+        res += tab[i];
+      }
+    }
+    return res;
+  }
+
+  static String inversePhrase(String s){
+    String res = "";
+    String[] tab = decomposePhrase(s);
+    for(int i = tab.length - 1 ; i == 0 ; i--){
+      if(i != 0){
+        res += (tab[i] + " ");
+      } else {
+        res += tab[i];
+      }
+    }
+    return res;
+  }
 
   public static void main(String[] args) {
     IO.println(remplacelettre("zaazaa" , 'a' , 'i'));
@@ -73,5 +101,7 @@ class EXO2 {
         IO.print(decphrs[i] + ",");
       }
     }
+    IO.println('"' +remplaceMot("az be az be" , "be" , "a") + '"');
+    IO.println('"' +inversePhrase("jeune padawan mere ta") + '"');
   }
 }
