@@ -37,15 +37,15 @@ class EXO2 {
   
   static String[] decomposePhrase(String s){  
     int wordn = 0;
-    for(int z = 0 ; z < s.length() ; z++){
-      if(s.charAt(z) == ' ' || z < s.length() - 1){
-        wordn++;
-        while(s.charAt(z) == ' '){
-          z++;
+    for(int y = 0 ; y < s.length() ; y++){
+      if(s.charAt(y) == ' ' || y == s.length() - 2){
+        if(s.charAt(y + 1) != ' '){
+          wordn++;
         }
       }
     }
-    String[] res = new String[wordn]; 
+    IO.println(wordn);
+    String[] res = new String[wordn];
     String tmp = "";
     int x = 0;
     for(int i = 0 ; i < s.length() ; i++){
@@ -67,8 +67,11 @@ class EXO2 {
     String[] decphrs = decomposePhrase("gougou gaga  hihi   haha");
     IO.print("[");
     for(int i = 0 ; i < decphrs.length ; i++){
-      IO.print(decphrs[i] + ",");
+      if(i == decphrs.length - 1){
+        IO.println(decphrs[i] + "]");
+      } else {
+        IO.print(decphrs[i] + ",");
+      }
     }
-    IO.println("]");
   }
 }
