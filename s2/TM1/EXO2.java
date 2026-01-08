@@ -38,7 +38,7 @@ class EXO2 {
   static String[] decomposePhrase(String s){  
     int wordn = 0;
     for(int z = 0 ; z < s.length() ; z++){
-      if(s.charAt(z) == ' ' || z == s.length() - 1){
+      if(s.charAt(z) == ' ' || z < s.length() - 1){
         wordn++;
         while(s.charAt(z) == ' '){
           z++;
@@ -49,7 +49,7 @@ class EXO2 {
     String tmp = "";
     int x = 0;
     for(int i = 0 ; i < s.length() ; i++){
-      while(s.charAt(i) != ' ' || i != s.length()){
+      while(i < s.length() && s.charAt(i) != ' '){
         tmp += s.charAt(i);
         i++;
       }
