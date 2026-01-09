@@ -80,7 +80,7 @@ class EXO2 {
   static String inversePhrase(String s){
     String res = "";
     String[] tab = decomposePhrase(s);
-    for(int i = tab.length - 1 ; i == 0 ; i--){
+    for(int i = tab.length - 1; i >= 0 ; i--){
       if(i != 0){
         res += (tab[i] + " ");
       } else {
