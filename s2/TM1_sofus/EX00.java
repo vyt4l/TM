@@ -1,7 +1,3 @@
-
-
-
-
 class EX00{
 
   public static boolean valid_int(String str)
