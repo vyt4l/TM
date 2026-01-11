@@ -1,6 +1,4 @@
 public class Article{
-  String name;
+  String nom;
   int prix;
-
-  public class Article(String n , )
 }
