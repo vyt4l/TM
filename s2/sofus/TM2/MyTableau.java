@@ -2,6 +2,12 @@ public class MyTableau {
     int[] array;
     int len;
 
+    public MyTableau()
+    {
+        this.array = new int[1];
+        this.len = 0;
+    }
+
     public  int[] copy_intarray(int[] arr)
     {
         int[] narray = new int[this.len + 1];
@@ -14,18 +20,22 @@ public class MyTableau {
 
     public void add(int val)
     {
-        this.len++;
         if (this.array.length < this.len)
         {
             this.array = copy_intarray(array);
         }
         this.array[this.len] = val;
+        this.len++;
+    }
+
+    public void delete (int pos)
+    {
+        
     }
 
     public static void main(String[] args)
     {
-
         MyTableau ex = new MyTableau();
-        IO.println(ex);
+        ex.add(10);
     }
 }
