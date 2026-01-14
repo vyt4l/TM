@@ -77,7 +77,7 @@ class Commerce
     IO.println("");
     afficherPanier(pan);
     IO.println("");
-    IO.println("Vous avez un total de " + prixTotal(pan) + "€ dans votre panier.");
+    IO.println("Vous avez un total de " + prixTotal + "€ dans votre panier.");
   }
 
 }

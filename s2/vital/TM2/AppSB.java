@@ -9,5 +9,6 @@ class AppSB
     {
       sb.append(c);
     }
+    IO.println(sb);
   }
 }
