@@ -41,4 +41,9 @@ class Tm2
       return 0;
     }
   }
+
+  public String toString()
+  {
+    return "int 1 : " + int1 + " , int 2 : " + int2 + " , str1 : " + str1;
+  }
 }
