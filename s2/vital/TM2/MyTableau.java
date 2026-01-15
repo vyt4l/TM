@@ -11,10 +11,6 @@ class MyTableau
 
   public void add(int val)
   { 
-    if(int1 != 0)
-    {
-    int1 ++;
-    }
     if(int1 == tabint.length)
     {
       int[] res = new int[tabint.length + 1];
@@ -29,6 +25,7 @@ class MyTableau
     {
       tabint[int1] = val;
     }
+    int1++;
   }
 
   public void delete(int pos)
@@ -57,6 +54,18 @@ class MyTableau
     return true;
   }
 
+  public String toString()
+  {
+    String res = "[ ";
+    for(int i = 0 ; i < this.int1 ; i++)
+    {
+      res += String.valueOf(this.get(i));
+      res += " ";
+    }
+    res += "]";
+    return res;
+  }
+
   public static void main(String[] args)
   {
     MyTableau tab1 = new MyTableau(3);
@@ -64,7 +73,15 @@ class MyTableau
     tab1.add(2);
     tab1.add(3);
     tab1.add(4);
-    IO.println(tab1.tabint[3]);
+    IO.println(tab1);
+    
+    tab1.delete(2);
+    IO.println(tab1);
+    
+    IO.println("tab1 triée : " + tab1.estTrie());
+    tab1.add(3);
+    IO.println(tab1);
+    IO.println("tab1 triée : " + tab1.estTrie());
   }
 
 }
