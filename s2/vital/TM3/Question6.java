@@ -6,7 +6,7 @@ public class Question6
   public static void main(String[] args) 
   {
     JFrame frame = new JFrame();
-    frame.setSize(300, 200); 
+    frame.setSize(200, 200); 
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     Hexagone hexa = new Hexagone();
     frame.add(hexa);
@@ -28,12 +28,21 @@ class Hexagone extends JComponent
 
     g2.setStroke(new BasicStroke(5));
     g2.setColor(Color.BLUE);
-    g2.drawLine(100, 0, 200, 0);        
-    g2.drawLine(200, 0, 250, 86);     
-    g2.drawLine(250, 86, 200, 173); 
-    g2.drawLine(200, 173, 100, 173);
-    g2.drawLine(100, 173, 50, 86);  
-    g2.drawLine(50, 86, 100, 0);      
+    
+    int[] x = new int[6];
+    int[] y = new int[6];
+    double angle = Math.toRadians(360/6);
+    for(int i = 0 ; i < 6 ; i++)
+    {
+      x[i] = (int) (100 * Math.cos(i* angle));
+      y[i] = (int) (100 * Math.sin(i* angle));
+    }
+    
+    for(int z = 0 ; z < 6 ;z++)
+    {
+      int nextIndex = (z + 1) % 6;
+      g2.drawLine(x[z] + 100 , y[z] +100 , x[nextIndex] + 100, y[nextIndex] + 100);
+    }
   }
 }
 
