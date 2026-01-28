@@ -25,6 +25,17 @@ class EXO3{
     else if(tab[j-1] == tab[i]){return palindrome(tab , i+1 , j-1);}
     else{return false;}
   }
+
+  public static void inverse(int[] tab , int i , int j){
+    if(i == j - 1 || i == j);
+    else {
+      int tmp = tab[i];
+      tab[i] = tab[j-1];
+      tab[j-1] = tmp;
+      inverse(tab , i+1 , j-1);
+    }
+  }
+
   public static void main(){
     int[] tab = {1,2,3,6,4,5};
     IO.println(isin(tab , 5 , 6));
@@ -36,5 +47,9 @@ class EXO3{
     IO.println(adjacent(tab,4));
     int[] tab2 = {1,2,3,2,1};
     IO.println(palindrome(tab2, 1 , 4));
+    inverse(tab2 , 2 , 5);
+    for (int i = 0; i < tab2.length ;i++) {
+      IO.print(tab2[i] + " ");
+    }
   }
 }
