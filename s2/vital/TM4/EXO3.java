@@ -13,14 +13,21 @@ class EXO3{
       multab(tab , x , j-1);
     }
   }
-
+  
+  public static boolean adjacent(int[] tab , int j){
+    if (j < 2){return false;}
+    else if (tab[j-1] == tab[j-2]) {return true;}
+    else {return adjacent(tab , j-1);}
+  }
 
   public static void main(){
-    int[] tab = {1,2,3,4,5};
-    IO.println(isin(tab , 5 , 5));
+    int[] tab = {1,2,3,6,4,5};
+    IO.println(isin(tab , 5 , 6));
     multab(tab , 2 , 3);
     for (int i = 0; i < tab.length ;i++) {
       IO.print(tab[i] + " ");
     }
+    IO.println("");
+    IO.println(adjacent(tab,4));
   }
 }
