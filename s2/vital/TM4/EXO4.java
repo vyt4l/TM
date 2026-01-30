@@ -7,7 +7,18 @@ class EXO4{
   }
   public static boolean palindrome(String s){ return palindrome(s , 0 , s.length());}
 
+  public static String verlan(String s , int i , String res){
+    if (i == 0){
+      return res + s.charAt(i);
+    }
+    else {
+      return verlan(s , i-1 , res + s.charAt(i));
+    }
+  }
+  public static String verlan(String s){return verlan(s , s.length() - 1 , "");} 
+
   public static void main(String[] args){
     IO.println(palindrome(args[0]));
+    IO.println(verlan(args[0]));
   }
 }
