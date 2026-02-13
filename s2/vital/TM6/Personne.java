@@ -26,8 +26,33 @@ public class Personne {
         return personne;
     }
 
+    public int hoelessdesc(){
+      int res = 0;
+      if (this.enfants.length != 0){
+        for (int i = 0 ; i < this.enfants.length ; i++){
+          res += this.enfants[i].hoelessdesc();
+        }
+      } else {
+        return 1;
+      }
+      return res; 
+    }
+
+    public int nbdesc(){
+      int res = 0;
+      if (this.enfants.length != 0){
+        for (int i = 0 ; i < this.enfants.length ; i++){
+          res ++;
+          res += this.enfants[i].nbdesc();
+        }
+      }
+      return res;
+    }
+    
+
     public static void main(String[] args) {
         Personne p = creationFamille(1950);
-
+        IO.println(p.nbdesc());
+        IO.println(p.hoelessdesc());
     }
 }
