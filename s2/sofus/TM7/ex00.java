@@ -100,12 +100,13 @@ class ex00 {
 		display_tab(tab, "unsorted :");
 		sort.sort(tab);
 		display_tab(tab, "sorted :");
-		IO.println();
 		if (is_sorted(tab)) {
 			IO.println("OK");
+			IO.println("\n");
 			return (true);
 		} else {
 			IO.println("KO");
+			IO.println("\n");
 			return (false);
 		}
 	}
@@ -117,6 +118,12 @@ class ex00 {
 		}
 		for (int i = 0; i < Integer.parseInt(argv[0]); i++) {
 			if (!test_sort(ex00::bubble_sort)) {
+				System.exit(1);
+			}
+			if (!test_sort(ex00::insert_sort)) {
+				System.exit(1);
+			}
+			if (!test_sort(ex00::select_sort)) {
 				System.exit(1);
 			}
 		}
