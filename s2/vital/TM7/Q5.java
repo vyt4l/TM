@@ -8,8 +8,8 @@ class Q5 {
           temp = tab[i];
           tab[i] = tab[i + 1];
           tab[i + 1] = temp;
-          }
         }
+      }
       for (int i = tab.length - 2 - j; i > j; i--) {
         if (tab[i] < tab[i - 1]) {
           temp = tab[i];
