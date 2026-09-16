@@ -4,38 +4,48 @@ public class Rectangle {
     private final int hauteur;
 
     public Rectangle(Point centre, int largeur, int hauteur) {
-        // TODO : vérifier que les dimensions permettent de créer un rectangle valide
-        // TODO : initialiser les attributs
+				if (largeur <= 0 || hauteur <= 0)
+ 					throw new IllegalArgumentException("Dimensions invalides");
+				
+				this.centre = centre;
+				this.largeur = largeur;
+				this.hauteur = hauteur;
     }
 
     public Point getCentre() {
-        // TODO
-        return null;
+        return (this.centre);
     }
 
     public int getLargeur() {
-        // TODO
-        return 0;
+        return (this.largeur);
     }
 
     public int getHauteur() {
-        // TODO
-        return 0;
+        return (this.hauteur);
     }
 
     public double getSurface() {
-        // TODO
-        return 0.0;
+        return (this.hauteur * this.largeur);
     }
 
     public double getPerimetre() {
-        // TODO
-        return 0.0;
+        return (2 * (this.largeur + this.hauteur));
     }
 
     @Override
     public String toString() {
-        // TODO : retourner une représentation lisible du rectangle
-        return "";
+        return ("""
+							Triangle {
+								\t Centre : %s
+								\t Largeur : %d
+								\t Hauteur : %d
+								\t Surface : %f
+								\t Perimetre : %f
+								}"""
+								.formatted(this.centre.toString()
+													,this.getLargeur()
+													,this.getHauteur()
+													,this.getSurface()
+													,this.getPerimetre()));
     }
 }
