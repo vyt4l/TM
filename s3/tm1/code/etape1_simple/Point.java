@@ -3,22 +3,21 @@ public class Point {
     private final int y;
 
     public Point(int x, int y) {
-        // TODO : initialiser les attributs
+        this.x = x;
+        this.y = y;
     }
 
     public int getX() {
-        // TODO : retourner x
-        return 0;
+        return (this.x);
     }
 
     public int getY() {
-        // TODO : retourner y
-        return 0;
+        return (this.y);
     }
 
     @Override
     public String toString() {
-        // TODO : retourner une représentation sous la forme "(x,y)"
-        return "";
+        return ("(%d,%d)"
+					.formatted(this.x, this.y));
     }
 }
