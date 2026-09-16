@@ -1,4 +1,4 @@
-public class Rectangle {
+public class Rectangle implements Forme {
     private final Point centre;
     private final int largeur;
     private final int hauteur;
@@ -24,10 +24,12 @@ public class Rectangle {
         return (this.hauteur);
     }
 
+		@Override
     public double getSurface() {
         return (this.hauteur * this.largeur);
     }
 
+		@Override
     public double getPerimetre() {
         return (2 * (this.largeur + this.hauteur));
     }

@@ -1,4 +1,4 @@
-public class Cercle {
+public class Cercle implements Forme{
     private final Point centre;
     private final int rayon;
 
@@ -12,15 +12,17 @@ public class Cercle {
     public Point getCentre() {
         return (this.centre);
     }
-
+		
     public int getRayon() {
         return (this.rayon);
     }
 
+		@Override
     public double getSurface() {
         return (Math.PI * (this.rayon * this.rayon));
     }
 
+		@Override
     public double getPerimetre() {
         return (2 * Math.PI * this.rayon);
     }
