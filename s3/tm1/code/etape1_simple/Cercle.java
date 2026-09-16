@@ -3,33 +3,41 @@ public class Cercle {
     private final int rayon;
 
     public Cercle(Point centre, int rayon) {
-        // TODO : vérifier que le rayon permet de créer un cercle valide
-        // TODO : initialiser les attributs
+				if (rayon <= 0)
+						 throw new IllegalArgumentException("Rayon invalide");
+				this.centre = centre;
+				this.rayon = rayon;
     }
 
     public Point getCentre() {
-        // TODO
-        return null;
+        return (this.centre);
     }
 
     public int getRayon() {
-        // TODO
-        return 0;
+        return (this.rayon);
     }
 
     public double getSurface() {
-        // TODO
-        return 0.0;
+        return (Math.PI * (this.rayon * this.rayon));
     }
 
     public double getPerimetre() {
-        // TODO
-        return 0.0;
+        return (2 * Math.PI * this.rayon);
     }
 
     @Override
     public String toString() {
         // TODO : retourner une représentation lisible du cercle
-        return "";
+ 				return ("""
+							Triangle {
+								\t Centre : %s
+								\t Rayon : %d
+								\t Surface : %f
+								\t Perimetre : %f
+								}"""
+								.formatted(this.centre.toString()
+													,this.getRayon()
+													,this.getSurface()
+													,this.getPerimetre()));
     }
 }
