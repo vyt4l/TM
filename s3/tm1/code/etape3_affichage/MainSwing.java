@@ -5,17 +5,20 @@ void main() {
     var rectangle = new Rectangle(new Point(100, 100), 80, 40);
     var cercle = new Cercle(new Point(200, 200), 50);
 
-    // TODO : créer les deux objets affichables
+		RectangleAffichable rAff = new RectangleAffichable(rectangle);
+		CercleAffichable cAff = new CercleAffichable(cercle);
 
-    // TODO : afficher leur représentation textuelle avec IO.println(...)
+		IO.println(rAff.imprimer());
+		IO.println(cAff.imprimer());
 
-    // TODO : créer une List<Dessinable> contenant les deux objets affichables
-
+		List<Dessinable> lst = new ArrayList<Dessinable>();
+		lst.add(rAff);
+		lst.add(cAff);
     var frame = new JFrame("Afficheur de formes");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    // TODO : installer un AfficheurPanel dans la fenêtre
-
+		AfficheurPanel aff = new AfficheurPanel(lst);
+    frame.add(aff);
     frame.pack();
     frame.setVisible(true);
 }

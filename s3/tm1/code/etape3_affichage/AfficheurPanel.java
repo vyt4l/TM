@@ -17,6 +17,7 @@ public class AfficheurPanel extends JPanel {
 
         for (Dessinable forme : formes) {
             // TODO : demander à la forme de se dessiner
+						forme.dessiner(g);
         }
     }
 }
