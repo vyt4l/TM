@@ -2,4 +2,5 @@
 <table>
     <tr> <td>s1 : TM de la matière programmation (incomplets car le majorité du travail a été fait sur les machines de la fac) fait en <a href="https://github.com/FrenchTechLead/robusta">Robusta</a></td> </tr>
     <tr> <td>s2 : TM de la matière complément de programmation divisés en 3 versions fait par 3 personnes (le code sera ajouté petit a petit et devrait se finir en fin mai)</td> </tr>
+    <tr> <td>s3 : TD de la matière programmation java 3, personne unique compare aux deux semestres precedents</td> </tr>
 </table>
