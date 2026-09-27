@@ -27,12 +27,7 @@ public class Produit implements Comparable<Produit> {
 	public int getStock() {return (this.stock);}
 
 	public String toString() {
-		return ("""
-			Produit {
-			\t Nom : %s
-			\t Prix : %f
-			\t Stock : %d
-			}"""
+		return ("%s : {Prix : %.2f euros Stock : %d}"
 			.formatted(
 				this.getNom()
 				,this.getPrix()
